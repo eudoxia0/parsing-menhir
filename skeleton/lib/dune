@@ -3,7 +3,7 @@
  (modules Parser))
 
 (library
- (name foo_core)
+ (name menhir_tutorial_core)
  (flags
   ; menhir generates instances of the "unused rec flag"
   ; warning

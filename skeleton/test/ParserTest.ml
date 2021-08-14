@@ -1,6 +1,6 @@
 open OUnit2
-open Foo_core.Ast
-open Foo_core.ParserInterface
+open Menhir_tutorial_core.Ast
+open Menhir_tutorial_core.ParserInterface
 
 let peq (s: string) (v: 'a) =
   assert_equal v (parse_ast s)
