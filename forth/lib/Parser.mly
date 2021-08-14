@@ -19,6 +19,6 @@ program:
   ;
 
 atom:
-  | INT_CONSTANT { IntConstant $1 }
-  | FLOAT_CONSTANT { FloatConstant $1 }
+  | INT_CONSTANT { Int $1 }
+  | FLOAT_CONSTANT { Float $1 }
   ;
