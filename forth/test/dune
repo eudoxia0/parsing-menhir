@@ -1,0 +1,3 @@
+(tests
+ (names ParserTest)
+ (libraries menhir_tutorial_core ounit2))

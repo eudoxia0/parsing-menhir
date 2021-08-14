@@ -33,3 +33,9 @@ jobs:
 
       - name: Run OCaml tests for project skeleton
         run: cd skeleton; opam exec -- dune runtest
+
+      - name: Build Forth parser
+        run: cd forth; opam exec -- dune build
+
+      - name: Run OCaml tests for Forth parser
+        run: cd forth; opam exec -- dune runtest
