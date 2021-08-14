@@ -14,10 +14,11 @@ let advance_line lexbuf =
 let digit = ['0'-'9']
 let sign = ['-' '+']
 let exponent = ['e' 'E']
+let alpha = ['a'-'z' 'A'-'Z']
 
 let int_constant = sign? digit+
-
 let float_constant = sign? digit+ '.' digit+ (exponent sign? digit+)?
+let identifier = alpha (alpha | digit | '-')*
 
 let whitespace = [' ' '\t']+
 
@@ -26,6 +27,7 @@ let whitespace = [' ' '\t']+
 rule token = parse
   | int_constant { INT_CONSTANT (int_of_string (Lexing.lexeme lexbuf)) }
   | float_constant { FLOAT_CONSTANT (float_of_string (Lexing.lexeme lexbuf)) }
+  | identifier { WORD (Lexing.lexeme lexbuf) }
   (* etc. *)
   | whitespace { token lexbuf }
   | eof { EOF }

@@ -4,6 +4,7 @@ open Ast
 
 %token <int> INT_CONSTANT
 %token <float> FLOAT_CONSTANT
+%token <string> WORD
 %token EOF
 
 /* Types */
@@ -21,4 +22,5 @@ program:
 atom:
   | INT_CONSTANT { Int $1 }
   | FLOAT_CONSTANT { Float $1 }
+  | WORD { Word $1 }
   ;
