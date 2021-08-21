@@ -13,9 +13,27 @@ let test_parse_int_constants _ =
   peq "-0" (Program [Int 0]);
   peq "-123" (Program [Int (-123)])
 
+let test_parse_float_constants _ =
+  peq "0.0" (Program [Float 0.0]);
+  peq "123.0" (Program [Float 123.0]);
+  peq "+123.0" (Program [Float 123.0]);
+  peq "1000.0" (Program [Float 1000.0]);
+  peq "-123.0" (Program [Float (-123.0)]);
+  peq "123.0e6" (Program [Float 123.0e6]);
+  peq "123.0e-6" (Program [Float 123.0e-6]);
+  peq "-123.0e6" (Program [Float (-123.0e6)]);
+  peq "-123.0e-6" (Program [Float (-123.0e-6)])
+
+let test_parse_words _ =
+  peq "TEST" (Program [Word "TEST"]);
+  peq "TEST-PROGRAM" (Program [Word "TEST-PROGRAM"]);
+  peq "TEST-123" (Program [Word "TEST-123"])
+
 let suite =
   "Parser tests" >::: [
-      "Integer constants" >:: test_parse_int_constants
+      "Integer constants" >:: test_parse_int_constants;
+      "Float constants" >:: test_parse_float_constants;
+      "Words" >:: test_parse_words
     ]
 
 let _ = run_test_tt_main suite
