@@ -20,7 +20,7 @@ program:
   ;
 
 atom:
-  | INT_CONSTANT { Int $1 }
-  | FLOAT_CONSTANT { Float $1 }
-  | WORD { Word $1 }
+  | i=INT_CONSTANT { Int i }
+  | f=FLOAT_CONSTANT { Float f }
+  | s=WORD { Word s }
   ;
