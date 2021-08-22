@@ -29,11 +29,16 @@ let test_parse_words _ =
   peq "TEST-PROGRAM" (Program [Word "TEST-PROGRAM"]);
   peq "TEST-123" (Program [Word "TEST-123"])
 
+let test_parse_programs _ =
+  peq "TEST 3.14   123 -3.4" (Program [Word "TEST"; Float 3.14; Int 123; Float (-3.4)]);
+  peq "A 1 B" (Program [Word "A"; Int 1; Word "B"])
+
 let suite =
   "Parser tests" >::: [
       "Integer constants" >:: test_parse_int_constants;
       "Float constants" >:: test_parse_float_constants;
-      "Words" >:: test_parse_words
+      "Words" >:: test_parse_words;
+      "Programs" >:: test_parse_programs
     ]
 
 let _ = run_test_tt_main suite
